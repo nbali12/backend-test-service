@@ -26,7 +26,7 @@ const itemsToSell = {
 const orders = [
   {
     orderNumber: 1,
-    orderDate: 'September 15th, 2023',
+    orderDate: 'September-15-2023',
     lineItems: [
       {
         'BirthdayBox': {
@@ -53,7 +53,7 @@ const orders = [
   },
   {
     orderNumber: 2,
-    orderDate: 'September 15th, 2023',
+    orderDate: 'September-15-2023',
     lineItems: [
       {
         'ValentinesBox': {
@@ -73,7 +73,7 @@ const orders = [
   },
   {
     orderNumber: 3,
-    orderDate: 'September 15th, 2023',
+    orderDate: 'September-16-2023',
     lineItems: [
       {
         'BirthdayBox': {
