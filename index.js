@@ -6,18 +6,14 @@ const port = process.env.PORT || 3001;
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-  const jsonResponse = {
-    message: 'Hello, Express.js!',
-    date: new Date()
-  };
 
-  res.json(jsonResponse);
-});
-
-app.get('/order-dates', (req, res) => {
+app.get('/orderDates', (req, res) => {
   const orderDates = orders.map(order => order.orderDate);
   res.json(orderDates);
+});
+
+app.get('/itemsToSell', (req, res) => {
+  res.json(itemsToSell);
 });
 
 app.get('/orders', (req, res) => {
@@ -34,6 +30,34 @@ app.get('/orders', (req, res) => {
   }
 
   res.json(filteredOrders);
+});
+
+app.get('/lineItemCount', (req, res) => {
+  const { orderDate } = req.query;
+
+  if (!orderDate) {
+    return res.status(400).json({ error: 'Order date is required' });
+  }
+
+  const filteredOrders = orders.filter((order) => order.orderDate === orderDate);
+
+  const boxCounts = {
+    ValentinesBox: 0,
+    BirthdayBox: 0,
+    ClientGiftBox: 0,
+  };
+
+  filteredOrders.forEach((order) => {
+    order.lineItems.forEach((lineItem) => {
+      for (const boxName in lineItem) {
+        if (boxCounts[boxName] !== undefined) {
+          boxCounts[boxName] += 1;
+        }
+      }
+    });
+  });
+
+  res.json({ orderDate, lineItemCounts: boxCounts });
 });
 
 app.listen(port, () => {

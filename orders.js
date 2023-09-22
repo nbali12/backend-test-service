@@ -89,7 +89,54 @@ const orders = [
       name: 'Dan Smith',
       address: '100 King Street East'
     }
+  },
+  {
+    orderNumber: 4,
+    orderDate: 'September-16-2023',
+    lineItems: [
+      {
+        'ClientGiftBox': {
+          contains: [
+            'Bottle of wine',
+            'Fruit basket',
+            'Pen'
+          ]
+        }
+      },
+    ],
+    shipTo: {
+      name: 'Dan Smith',
+      address: '100 King Street East'
+    }
+  },{
+    orderNumber: 5,
+    orderDate: 'September-16-2023',
+    lineItems: [
+      {
+        'ClientGiftBox': {
+          contains: [
+            'Bottle of wine',
+            'Fruit basket',
+            'Pen'
+          ]
+        },
+        'ValentinesBox': {
+          contains: [
+            'Red Roses Bouquet',
+            'Box of chocolates',
+            'Love card',
+            'Womens perfume'
+          ]
+        }
+
+      },
+    ],
+    shipTo: {
+      name: 'Dan Smith',
+      address: '100 King Street East'
+    }
   }
+  
 ];
 
 module.exports = {
